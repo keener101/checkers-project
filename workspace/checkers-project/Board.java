@@ -8,22 +8,22 @@
  *
  */
 public class Board {
-	
+
 	private boolean blackTurn;
-	private Space[][] board;
-	
+	private static Space[][] board;
+
 	public Board(){
 		blackTurn = true; 
-		
+
 		board = new Space[8][8]; 
-		
+
 		for(int i = 0; i < 8; i++){ //initializing all the board spaces 8x8
 			for(int j = 0; j < 8; j++){
-				Space s = new Space(i+1, j+1);
+				Space s = new Space(i, j);
 				board[i][j] = s;
 			}
 		}
-		
+
 		for(int i = 0; i < 3; i++){		//makes initial black pieces
 			if(i % 2 == 1){			//if odd number row (1st row, 3rd row)
 				for(int j = 1; j < 8; j = j+2){
@@ -37,7 +37,7 @@ public class Board {
 				}
 			}
 		}
-		
+
 		for(int i = 5; i < 8; i++){		//makes initial red pieces
 			if(i % 2 == 0){			//if odd number row (7th row)
 				for(int j = 1; j < 8; j = j+2){
@@ -51,10 +51,10 @@ public class Board {
 
 		}
 	}
-	
+
 	public String toString(){
 		String retVal = "";
-		
+
 		for (int i = 0; i < 8; i++){
 			retVal += "\n";
 			for (int j = 0; j < 8; j++){
@@ -67,9 +67,23 @@ public class Board {
 				}
 			}
 		}
-		
+
 		return retVal;
+
+	}
+
+	public static Space getSpace(int row, int col){
 		
+		try{
+			if(row > 7 || row < 0 || col > 7 || col < 0){
+				throw new Exception();
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return board[row][col];
 	}
 
 }
