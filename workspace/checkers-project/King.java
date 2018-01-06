@@ -1,4 +1,9 @@
-
+/**
+ * Represents a King piece in Checkers. Child of Checker
+ * 
+ * @author Keener
+ *
+ */
 public class King extends Checker {
 	
 	public King(Color kingColor, Space kingSpace){
