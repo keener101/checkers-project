@@ -77,4 +77,10 @@ public class Checker {
 	public void jump(){
 		
 	}
+	
+	//TODO: make this method replace the Checker with a King
+	
+	public void kingMe(){
+		
+	}
 }
