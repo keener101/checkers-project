@@ -31,7 +31,7 @@ public class Checker {
 		checkerSpace = newSpace;
 	}
 	
-	public boolean canMove(){			//TODO this only currently checks moves into empty spaces, not jumps
+	public boolean canMove(){			
 		boolean retVal = false;
 		
 		if(checkerColor == Color.RED){				//if RED, checker needs open space in one of the forward diagonals
@@ -58,5 +58,23 @@ public class Checker {
 		
 		System.out.println(retVal);
 		return retVal;
+	}
+	
+	//TODO: make this method check if a jump is possible
+	
+	public boolean canJump(){
+		return false;
+	}
+	
+	//TODO: make this method move a piece
+	
+	public void move(){
+	
+	}
+	
+	//TODO: make this method jump
+	
+	public void jump(){
+		
 	}
 }
