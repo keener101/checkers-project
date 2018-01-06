@@ -22,7 +22,7 @@ public class Board {
 		
 		for(int i = 0; i < 3; i++){		//makes initial black pieces
 			if(i+1 % 2 == 1){			//if odd number row (1st row, 3rd row)
-				for(int j = 1; j < 8; j = j+2){
+				for(int j = 0; j < 8; j = j+2){
 					board[i][j].setPiece(new Checker(Color.BLACK, board[i][j]));
 				}
 			} else {					//if even number row (2nd row)
@@ -35,7 +35,7 @@ public class Board {
 		
 		for(int i = 5; i < 8; i++){		//makes initial red pieces
 			if(i+1 % 2 == 1){			//if odd number row (7th row)
-				for(int j = 1; j < 8; j = j+2){
+				for(int j = 0; j < 8; j = j+2){
 					board[i][j].setPiece(new Checker(Color.RED, board[i][j]));
 				}
 			} else {					//if even number row (6th row, 8th row)
@@ -46,7 +46,26 @@ public class Board {
 
 		}
 	}
-
+	
+	public String toString(){
+		String retVal = "";
+		
+		for (int i = 0; i < 8; i++){
+			retVal += "\n";
+			for (int j = 0; j < 8; j++){
+				if(board[i][j].getPiece() == null){
+					retVal += "O";
+				} else if(board[i][j].getPiece().getColor() == Color.RED) {
+					retVal += "R";
+				} else {
+					retVal += "B";
+				}
+			}
+		}
+		
+		return retVal;
 		
 	}
+
+}
 

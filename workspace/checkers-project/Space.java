@@ -39,5 +39,15 @@ public class Space {
 		newSpace.setPiece(piece);
 		piece = null;
 	}
+	
+	public int getRow(){
+		int thisRow = row;
+		return thisRow;
+	}
+	
+	public int getCol(){
+		int thisCol = col;
+		return thisCol;
+	}
 
 }
