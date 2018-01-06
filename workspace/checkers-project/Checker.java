@@ -44,8 +44,19 @@ public class Checker {
 					retVal = (Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() == null || Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() == null);
 				}
 			}
+		} else {									//if BLACK, needs open space in one of the backwards diagonals
+			if(checkerSpace.getRow() < 7){			//can't move backwards if at back (king situation)
+				if(checkerSpace.getCol() == 0){		//if on left edge, can only check right
+					retVal = Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() == null;
+				} else if (checkerSpace.getCol() == 7){	//if on right edge, can only check right
+					retVal = Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() == null;
+				} else {		//else, check both left and right and if either are empty, valid move
+					retVal = (Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() == null || Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() == null);
+				}
+			}
 		}
 		
+		System.out.println(retVal);
 		return retVal;
 	}
 }
