@@ -10,14 +10,20 @@
 public class Space {
 	
 	private Checker piece;
+	private int row;
+	private int col;
 	
-	public Space() {
+	public Space(int row, int col) {
 		piece = null;
+		this.row = row;
+		this.col = col;
 		
 	}
 	
-	public Space(Checker thisChecker){
-		piece = thisChecker;
+	public Space(Checker piece, int row, int col){
+		this.piece = piece;
+		this.row = row;
+		this.col = col;
 	}
 	
 	public Checker getPiece() {
