@@ -5,8 +5,6 @@
  * @author Keener
  *
  */
-
-
 public class Space {
 	
 	private Checker piece;
