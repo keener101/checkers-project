@@ -17,6 +17,8 @@ public class Board {
 
 	public Board(){
 		blackTurn = true; 
+		blackPieces = new ArrayList<Checker>();
+		redPieces = new ArrayList<Checker>();
 
 		board = new Space[8][8]; 
 
@@ -37,12 +39,14 @@ public class Board {
 			} else {					//if even number row (2nd row)
 				for(int j = 0; j < 8; j = j+2){
 					Checker newChecker = new Checker(Color.BLACK, board[i][j]);
-					redPieces.add(newChecker);
+					blackPieces.add(newChecker);
 					board[i][j].setPiece(newChecker);
 				}
 			}
 		}
 
+		//TODO add similar logic as above when creating red pieces and add to red ArrayList
+		
 		for(int i = 5; i < 8; i++){		//makes initial red pieces
 			if(i % 2 == 0){			//if odd number row (7th row)
 				for(int j = 1; j < 8; j = j+2){
