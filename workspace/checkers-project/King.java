@@ -8,7 +8,7 @@ public class King extends Checker {
 	
 	public King(Color kingColor, Space kingSpace){
 		super(kingColor, kingSpace);
-		}
+	}
 	
 	//TODO all of the necessary methods that King should override
 	
