@@ -33,27 +33,29 @@ public class Checker {
 		checkerSpace = newSpace;
 	}
 
-	public boolean canMove(){			
+	public boolean canMove(Board board){			
 		boolean retVal = false;
 
 		if(checkerColor == Color.RED){				//if RED, checker needs open space in one of the forward diagonals
 			if(checkerSpace.getRow() > 0){			//can't move forward if at front (king situation)
 				if(checkerSpace.getCol() == 0){		//if on left edge, can only check right
-					retVal = Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() == null;
+					retVal = board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() == null;
 				} else if (checkerSpace.getCol() == 7){	//if on right edge, can only check right
-					retVal = Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() == null;
+					retVal = board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() == null;
 				} else {		//else, check both left and right and if either are empty, valid move
-					retVal = (Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() == null || Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() == null);
+					retVal = (board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() == null 
+						|| board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() == null);
 				}
 			}
 		} else {									//if BLACK, needs open space in one of the backwards diagonals
 			if(checkerSpace.getRow() < 7){			//can't move backwards if at back (king situation)
 				if(checkerSpace.getCol() == 0){		//if on left edge, can only check right
-					retVal = Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() == null;
+					retVal = board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() == null;
 				} else if (checkerSpace.getCol() == 7){	//if on right edge, can only check right
-					retVal = Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() == null;
+					retVal = board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() == null;
 				} else {		//else, check both left and right and if either are empty, valid move
-					retVal = (Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() == null || Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() == null);
+					retVal = (board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() == null 
+						|| board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() == null);
 				}
 			}
 		}
@@ -62,7 +64,7 @@ public class Checker {
 		return retVal;
 	}
 
-	public boolean canJump(){
+	public boolean canJump(Board board){
 
 		boolean retVal = false;
 
@@ -70,27 +72,27 @@ public class Checker {
 			//AND an empty space in the diagonal behind the black checker
 			if(checkerSpace.getRow() > 1){	//if in two first rows, can't jump
 				if(checkerSpace.getCol() < 2){	//if one of the two leftmost columns, can only jump rightwards
-					if(Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() != null 
-							&& Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() == Color.BLACK 
-							&& Board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2).getPiece() == null){
+					if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() != null 
+							&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() == Color.BLACK 
+							&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2).getPiece() == null){
 						retVal = true;
 					}
 				} else if (checkerSpace.getCol() > 5){ //if one two rightmost columns, can only jump left
-					if(Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() != null 
-							&& Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() == Color.BLACK 
-							&& Board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2).getPiece() == null){
+					if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() != null 
+							&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() == Color.BLACK 
+							&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2).getPiece() == null){
 						retVal = true;
 					}
 				} else { //if somewhere in middle 4 rows, can jump to both left and right
-					if(Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() != null 
-							&& Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() == Color.BLACK 
-							&& Board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2).getPiece() == null){
+					if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() != null 
+							&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() == Color.BLACK 
+							&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2).getPiece() == null){
 						retVal = true;
 					}
 
-					if(Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() != null 
-							&& Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() == Color.BLACK 
-							&& Board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2).getPiece() == null){
+					if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() != null 
+							&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() == Color.BLACK 
+							&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2).getPiece() == null){
 						retVal = true;
 					}
 				}
@@ -99,27 +101,27 @@ public class Checker {
 			//AND an empty space in the diagonal behind the red checker
 			if(checkerSpace.getRow() < 6){	//if in two last rows, can't jump
 				if(checkerSpace.getCol() < 2){	//if one of the two leftmost columns, can only jump rightwards
-					if(Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() != null 
-							&& Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() == Color.RED 
-							&& Board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2).getPiece() == null){
+					if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() != null 
+							&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() == Color.RED 
+							&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2).getPiece() == null){
 						retVal = true;
 					}
 				} else if (checkerSpace.getCol() > 5){ //if one two rightmost columns, can only jump left
-					if(Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() != null 
-							&& Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() == Color.RED 
-							&& Board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2).getPiece() == null){
+					if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() != null 
+							&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() == Color.RED 
+							&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2).getPiece() == null){
 						retVal = true;
 					}
 				} else { //if somewhere in middle 4 rows, can jump to both left and right
-					if(Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() != null 
-							&& Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() == Color.RED 
-							&& Board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2).getPiece() == null){
+					if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() != null 
+							&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() == Color.RED 
+							&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2).getPiece() == null){
 						retVal = true;
 					}
 
-					if(Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() != null 
-							&& Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() == Color.RED 
-							&& Board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2).getPiece() == null){
+					if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() != null 
+							&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() == Color.RED 
+							&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2).getPiece() == null){
 						retVal = true;
 					}
 				}
@@ -130,37 +132,37 @@ public class Checker {
 	}
 
 
-	public ArrayList<Space> possibleMoves(){
+	public ArrayList<Space> possibleMoves(Board board){
 		ArrayList<Space> allMoves = new ArrayList<Space>();
 
 
 		if(checkerColor == Color.RED){				
 			if(checkerSpace.getCol() == 0){		//if on left edge, can add right
-				allMoves.add(Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1));
+				allMoves.add(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1));
 			} else if (checkerSpace.getCol() == 7){	//if on right edge, can add left
-				allMoves.add(Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1));
+				allMoves.add(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1));
 			} else {		//else, check both left and right and if either are empty, add to arraylist
-				if(Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() == null){
-					allMoves.add(Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1));
+				if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() == null){
+					allMoves.add(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1));
 				}
 
-				if(Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() == null){
-					allMoves.add(Board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1));
+				if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() == null){
+					allMoves.add(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1));
 				}
 			}
 
 		} else {									//if BLACK, needs open space in one of the backwards diagonals
 			if(checkerSpace.getCol() == 0){		//if on left edge, can add right
-				allMoves.add(Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1));
+				allMoves.add(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1));
 			} else if (checkerSpace.getCol() == 7){	//if on right edge, can add left
-				allMoves.add(Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1));
+				allMoves.add(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1));
 			} else {		//else, check both left and right and if either are empty, add to arraylist
-				if(Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() == null){
-					allMoves.add(Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1));
+				if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() == null){
+					allMoves.add(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1));
 				}
 
-				if(Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() == null){
-					allMoves.add(Board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1));
+				if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() == null){
+					allMoves.add(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1));
 				}
 			}
 		}
@@ -172,7 +174,7 @@ public class Checker {
 
 	//TODO: make this method return all the possible spaces a checker can jump to
 
-	public ArrayList<Space> possibleJumps(Checker thisChecker){
+	public ArrayList<Space> possibleJumps(){
 		ArrayList<Space> allJumps = new ArrayList<Space>();
 
 		return allJumps;

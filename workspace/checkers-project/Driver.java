@@ -6,11 +6,11 @@ public class Driver {
 		
 		System.out.println(myBoard.toString());
 		
-		Board.getSpace(2, 0).getPiece().canMove();
-		Board.getSpace(5, 0).getPiece().canMove();
+		myBoard.getSpace(2, 0).getPiece().canMove(myBoard);
+		myBoard.getSpace(5, 0).getPiece().canMove(myBoard);
 		
-		Board.getSpace(0, 0).getPiece().canMove();
-		Board.getSpace(7, 0).getPiece().canMove();
+		myBoard.getSpace(0, 0).getPiece().canMove(myBoard);
+		myBoard.getSpace(7, 0).getPiece().canMove(myBoard);
 	}
 	
 }

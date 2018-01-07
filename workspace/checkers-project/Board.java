@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Board {
 
 	private boolean blackTurn;
-	private static Space[][] board;
+	private Space[][] board;
 	private ArrayList<Checker> blackPieces;
 	private ArrayList<Checker> redPieces;
 
@@ -81,7 +81,7 @@ public class Board {
 
 	}
 
-	public static Space getSpace(int row, int col){
+	public Space getSpace(int row, int col){
 		
 		try{
 			if(row > 7 || row < 0 || col > 7 || col < 0){
