@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Represents a King piece in Checkers. Child of Checker
  * 
@@ -120,6 +122,57 @@ public class King extends Checker {
 			}
 
 		return retVal;
+	}
+	
+	public ArrayList<Space> possibleMoves(Board board){
+		ArrayList<Space> allMoves = new ArrayList<Space>();
+		
+		if(checkerSpace.getRow() > 0){			//check all upwards moves
+			if(checkerSpace.getCol() == 0){		//if on left edge, can only check right
+				if (board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() == null){
+					allMoves.add(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1));
+				}
+			} else if (checkerSpace.getCol() == 7){	//if on right edge, can only check right
+				if (board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() == null){
+					allMoves.add(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1));
+				}
+			} else {		//else, check both left and right and if either are empty, valid move
+				if (board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() == null){
+					allMoves.add(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1));
+				}
+				
+				if (board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() == null){
+					allMoves.add(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1));
+				}
+			}
+		}
+		
+		if(checkerSpace.getRow() < 7){			//check all downwards moves
+			if(checkerSpace.getCol() == 0){		//if on left edge, can only check right
+				if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() == null){
+					allMoves.add(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1));
+				}
+			} else if (checkerSpace.getCol() == 7){	//if on right edge, can only check right
+				if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() == null){
+					allMoves.add(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1));
+				}
+			} else {		//else, check both left and right and if either are empty, valid move
+				if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() == null){
+					allMoves.add(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1));
+				}
+				
+				if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() == null){
+					allMoves.add(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1));
+				}
+			}
+		}
+		
+		
+		return allMoves;
+	}
+	
+	public void possibleJumps(){
+		
 	}
 	
 	public void move(){
