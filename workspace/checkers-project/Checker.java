@@ -60,8 +60,6 @@ public class Checker {
 		return retVal;
 	}
 
-	//TODO: make this method check if a jump is possible
-
 	public boolean canJump(){
 
 		boolean retVal = false;
@@ -129,13 +127,31 @@ public class Checker {
 		return retVal;
 	}
 
-	//TODO: make this method move a piece
+	//TODO: make this method return all the possible spaces a checker can move to
+	
+	public Space[] possibleMoves(Checker thisChecker){
+		Space[] allMoves = new Space[1];
+		
+		return allMoves;
+		
+	}
+	
+	//TODO: make this method return all the possible spaces a checker can jump to
+	
+		public Space[] possibleJumps(Checker thisChecker){
+			Space[] allJumps = new Space[1];
+			
+			return allJumps;
+			
+		}
+	
+	//TODO: make this method move a piece (might not be a void return)
 
 	public void move(){
 
 	}
 
-	//TODO: make this method jump
+	//TODO: make this method jump (might not be a void return)
 
 	public void jump(){
 
