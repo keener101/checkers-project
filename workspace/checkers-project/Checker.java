@@ -292,9 +292,13 @@ public class Checker {
 
 	}
 
-	//TODO: make this method replace the Checker with a King
 
-	public void kingMe(){
-
+	public void kingMe(Board board){
+		Space kingSpace = checkerSpace;
+		King king = new King(checkerColor, kingSpace);
+		kingSpace.setPiece(king);
+		this.isActive = false;
+		
+		board.addKing(checkerColor, king);
 	}
 }

@@ -94,5 +94,13 @@ public class Board {
 		
 		return board[row][col];
 	}
+	
+	public void addKing(Color color, King king){
+		if(color == Color.BLACK){
+			blackPieces.add(king);
+		} else {
+			redPieces.add(king);
+		}
+	}
 
 }
