@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * 
@@ -11,6 +12,8 @@ public class Board {
 
 	private boolean blackTurn;
 	private static Space[][] board;
+	private ArrayList<Checker> blackPieces;
+	private ArrayList<Checker> redPieces;
 
 	public Board(){
 		blackTurn = true; 
@@ -27,12 +30,14 @@ public class Board {
 		for(int i = 0; i < 3; i++){		//makes initial black pieces
 			if(i % 2 == 1){			//if odd number row (1st row, 3rd row)
 				for(int j = 1; j < 8; j = j+2){
-					Checker newChecker = new Checker(Color.BLACK, board[i][j]); 
+					Checker newChecker = new Checker(Color.BLACK, board[i][j]);
+					blackPieces.add(newChecker);
 					board[i][j].setPiece(newChecker);
 				}
 			} else {					//if even number row (2nd row)
 				for(int j = 0; j < 8; j = j+2){
-					Checker newChecker = new Checker(Color.BLACK, board[i][j]); 
+					Checker newChecker = new Checker(Color.BLACK, board[i][j]);
+					redPieces.add(newChecker);
 					board[i][j].setPiece(newChecker);
 				}
 			}
