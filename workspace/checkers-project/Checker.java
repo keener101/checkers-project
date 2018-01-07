@@ -172,8 +172,8 @@ public class Checker {
 
 	//TODO: make this method return all the possible spaces a checker can jump to
 
-	public Space[] possibleJumps(Checker thisChecker){
-		Space[] allJumps = new Space[1];
+	public ArrayList<Space> possibleJumps(Checker thisChecker){
+		ArrayList<Space> allJumps = new ArrayList<Space>();
 
 		return allJumps;
 
