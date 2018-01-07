@@ -174,9 +174,68 @@ public class Checker {
 
 	//TODO: make this method return all the possible spaces a checker can jump to
 
-	public ArrayList<Space> possibleJumps(){
+	public ArrayList<Space> possibleJumps(Board board){
 		ArrayList<Space> allJumps = new ArrayList<Space>();
+		
+		if (checkerColor == Color.RED){	//if color is red, needs to move downwards two diagonals
+			if(checkerSpace.getCol() < 2){	//if on left edge, can only jump rightwards
+				if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() != null 
+						&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() == Color.RED 
+						&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2).getPiece() == null){
+					allJumps.add(board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2));
+				}
+			} else if(checkerSpace.getCol() > 5){ //if one two rightmost columns, can only jump left
+				if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() != null 
+						&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() == Color.BLACK 
+						&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2).getPiece() == null){
+					allJumps.add(board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2));
+				}
+		} else {  //if somewhere in middle 4 rows, can jump to both left and right
+			if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() != null 
+					&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() == Color.BLACK 
+					&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2).getPiece() == null){
+				allJumps.add(board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2));
+			}
 
+			if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() != null 
+					&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() == Color.BLACK 
+					&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2).getPiece() == null){
+				allJumps.add(board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2));
+			}
+		}
+
+
+		
+		} else if (checkerColor == Color.BLACK){
+			if(checkerSpace.getCol() < 2){	//if on left edge, can only jump rightwards
+				if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() != null 
+						&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() == Color.RED 
+						&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2).getPiece() == null){
+					allJumps.add(board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2));
+				}
+			} else if(checkerSpace.getCol() > 5){ //if one two rightmost columns, can only jump left
+				if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() != null 
+						&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() == Color.BLACK 
+						&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2).getPiece() == null){
+					allJumps.add(board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2));
+				}
+		} else {  //if somewhere in middle 4 rows, can jump to both left and right
+			if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() != null 
+					&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() == Color.BLACK 
+					&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2).getPiece() == null){
+				allJumps.add(board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2));
+			}
+
+			if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() != null 
+					&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() == Color.BLACK 
+					&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2).getPiece() == null){
+				allJumps.add(board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2));
+			}
+		}
+			
+		}
+		
+		
 		return allJumps;
 
 	}
