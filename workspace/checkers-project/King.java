@@ -249,8 +249,43 @@ public class King extends Checker {
 	}
 	
 	
-	public void jump(){
-		
+	public void jump(Space newSpace, Board board){
+		Space oldSpace = checkerSpace;
+		newSpace.setPiece(this);
+		oldSpace.setPiece(null);
+		checkerSpace = newSpace;
+
+		if (newSpace.getCol() < oldSpace.getCol()){ //if jumped to the left, remove jumped piece 
+			if(newSpace.getRow() < oldSpace.getRow()){	//jumped up and to left
+				Space jumpedSpace = board.getSpace(oldSpace.getRow()-1, oldSpace.getCol()-1);
+				Checker jumpedChecker = jumpedSpace.getPiece();
+				jumpedSpace.setPiece(null);
+				jumpedChecker.setSpace(null);
+				jumpedChecker.isActive = false;
+			} else if (newSpace.getRow() > oldSpace.getRow()){ // jumped down and to left
+				Space jumpedSpace = board.getSpace(oldSpace.getRow()+1, oldSpace.getCol()-1);
+				Checker jumpedChecker = jumpedSpace.getPiece();
+				jumpedSpace.setPiece(null);
+				jumpedChecker.setSpace(null);
+				jumpedChecker.isActive = false;
+			}
+		} else if (newSpace.getCol() > oldSpace.getCol()){ //if jumped to right
+			if(newSpace.getRow() < oldSpace.getRow()){	//jumped up and to right
+				Space jumpedSpace = board.getSpace(oldSpace.getRow()-1, oldSpace.getCol()+1);
+				Checker jumpedChecker = jumpedSpace.getPiece();
+				jumpedSpace.setPiece(null);
+				jumpedChecker.setSpace(null);
+				jumpedChecker.isActive = false;
+			} else if (newSpace.getRow() > oldSpace.getRow()){ //jumped down and to right
+				Space jumpedSpace = board.getSpace(oldSpace.getRow()+1, oldSpace.getCol()+1);
+				Checker jumpedChecker = jumpedSpace.getPiece();
+				jumpedSpace.setPiece(null);
+				jumpedChecker.setSpace(null);
+				jumpedChecker.isActive = false;
+
+			}
+		}
+
 	}
 
 }

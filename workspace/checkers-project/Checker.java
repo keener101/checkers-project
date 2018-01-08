@@ -251,7 +251,6 @@ public class Checker {
 
 	}
 
-	//TODO: make this method jump (might not be a void return)
 
 	public void jump(Space newSpace, Board board){
 		Space oldSpace = checkerSpace;
