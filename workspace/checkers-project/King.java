@@ -56,7 +56,7 @@ public class King extends Checker {
 					
 					//this checks for jumps that are up and to the right for left edges
 					if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() != null 
-							&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() == Color.BLACK 
+							&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() != checkerColor 
 							&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2).getPiece() == null){
 						retVal = true;
 					}
@@ -64,7 +64,7 @@ public class King extends Checker {
 					
 					//this checks for jumps up and left for right edges
 					if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() != null 
-							&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() == Color.BLACK 
+							&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() != checkerColor 
 							&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2).getPiece() == null){
 						retVal = true;
 					}
@@ -72,14 +72,14 @@ public class King extends Checker {
 					
 					//this checks for jumps up and right for middle
 					if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() != null 
-							&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() == Color.BLACK 
+							&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() != checkerColor 
 							&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2).getPiece() == null){
 						retVal = true;
 					}
 
 					//this checks for jumps up and left for middle
 					if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() != null 
-							&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() == Color.BLACK 
+							&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() != checkerColor 
 							&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2).getPiece() == null){
 						retVal = true;
 					}
@@ -91,7 +91,7 @@ public class King extends Checker {
 					
 					//this checks for jumps down and to the right for left edges
 					if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() != null 
-							&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() == Color.RED 
+							&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() != checkerColor
 							&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2).getPiece() == null){
 						retVal = true;
 					}
@@ -99,7 +99,7 @@ public class King extends Checker {
 					
 					//this checks for jumps down and to the left for right edges
 					if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() != null 
-							&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() == Color.RED 
+							&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() != checkerColor 
 							&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2).getPiece() == null){
 						retVal = true;
 					}
@@ -107,14 +107,14 @@ public class King extends Checker {
 					
 					//this checks for jumps down and right for middle
 					if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() != null 
-							&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() == Color.RED 
+							&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() != checkerColor
 							&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2).getPiece() == null){
 						retVal = true;
 					}
 					
 					//this checks for jumps down and left for middle
 					if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() != null 
-							&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() == Color.RED 
+							&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() != checkerColor 
 							&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2).getPiece() == null){
 						retVal = true;
 					}
@@ -180,7 +180,7 @@ public class King extends Checker {
 				
 				//this checks for jumps that are up and to the right for left edges
 				if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() != null 
-						&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() == Color.BLACK 
+						&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() != checkerColor 
 						&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2).getPiece() == null){
 					allJumps.add(board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2));
 				}
@@ -188,7 +188,7 @@ public class King extends Checker {
 				
 				//this checks for jumps up and left for right edges
 				if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() != null 
-						&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() == Color.BLACK 
+						&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() != checkerColor 
 						&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2).getPiece() == null){
 					allJumps.add(board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2));
 				}
@@ -196,14 +196,14 @@ public class King extends Checker {
 				
 				//this checks for jumps up and right for middle
 				if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece() != null 
-						&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() == Color.BLACK 
+						&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()+1).getPiece().getColor() != checkerColor 
 						&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2).getPiece() == null){
 					allJumps.add(board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()+2));
 				}
 
 				//this checks for jumps up and left for middle
 				if(board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece() != null 
-						&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() == Color.BLACK 
+						&& board.getSpace(checkerSpace.getRow()-1, checkerSpace.getCol()-1).getPiece().getColor() != checkerColor 
 						&& board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2).getPiece() == null){
 					allJumps.add(board.getSpace(checkerSpace.getRow()-2, checkerSpace.getCol()-2));
 				}
@@ -215,7 +215,7 @@ public class King extends Checker {
 				
 				//this checks for jumps down and to the right for left edges
 				if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() != null 
-						&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() == Color.RED 
+						&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() != checkerColor
 						&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2).getPiece() == null){
 					allJumps.add(board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2));
 				}
@@ -223,7 +223,7 @@ public class King extends Checker {
 				
 				//this checks for jumps down and to the left for right edges
 				if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() != null 
-						&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() == Color.RED 
+						&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() != checkerColor 
 						&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2).getPiece() == null){
 					allJumps.add(board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2));
 				}
@@ -231,14 +231,14 @@ public class King extends Checker {
 				
 				//this checks for jumps down and right for middle
 				if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece() != null 
-						&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() == Color.RED 
+						&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()+1).getPiece().getColor() != checkerColor 
 						&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2).getPiece() == null){
 					allJumps.add(board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()+2));
 				}
 				
 				//this checks for jumps down and left for middle
 				if(board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece() != null 
-						&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() == Color.RED 
+						&& board.getSpace(checkerSpace.getRow()+1, checkerSpace.getCol()-1).getPiece().getColor() != checkerColor
 						&& board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2).getPiece() == null){
 					allJumps.add(board.getSpace(checkerSpace.getRow()+2, checkerSpace.getCol()-2));
 				}
@@ -248,9 +248,6 @@ public class King extends Checker {
 	return allJumps;
 	}
 	
-	public void move(){
-		
-	}
 	
 	public void jump(){
 		
