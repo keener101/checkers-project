@@ -8,32 +8,65 @@ import java.util.ArrayList;
  * @author Keener
  *
  */
+
+
 public class Checker {
 
 
 	Color checkerColor; 
 	Space checkerSpace;
-	boolean isActive;
+	boolean isActive;			//whether or not the checker is on the board. "false" here means removed
 
+	/**
+	 * Constructor
+	 * 
+	 * @param checkerColor - color of checker
+	 * @param checkerSpace - location of checker
+	 */
+	
 	public Checker(Color checkerColor, Space checkerSpace){
 		this.checkerColor = checkerColor;
 		this.checkerSpace = checkerSpace;
 		isActive = true;
 	}
 
+	
+	/**
+	 * Returns the color of the checker
+	 * @return checker Color
+	 */
+	
 	public Color getColor(){
 		Color thisColor = checkerColor; 
 		return thisColor;
 	}
 
+	/**
+	 * Returns the location of the Checker on the board. Null means it is removed
+	 * @return Space of checker
+	 */
+	
 	public Space getSpace(){
 		Space thisSpace = checkerSpace;
 		return thisSpace;
 	}
 
+	/**
+	 * Set the position of the checker
+	 * 
+	 * @param newSpace - the new space for the checker
+	 */
+	
 	public void setSpace(Space newSpace){
 		checkerSpace = newSpace;
 	}
+	
+	/**
+	 * Checks to see if a given checker can move
+	 * 
+	 * @param board - board that the checker is on 
+	 * @return true if piece can move
+	 */
 
 	public boolean canMove(Board board){			
 		boolean retVal = false;
@@ -66,6 +99,13 @@ public class Checker {
 		return retVal;
 	}
 
+	/**
+	 * Checks to see if a given checker can jump
+	 * 
+	 * @param board - board that the piece is on
+	 * @return - true if the piece can jump
+	 */
+	
 	public boolean canJump(Board board){
 
 		boolean retVal = false;
@@ -133,7 +173,13 @@ public class Checker {
 		return retVal;
 	}
 
-
+	/**
+	 * Lists all possible moves a given checker can make
+	 * 
+	 * @param board - current board state
+	 * @return - ArrayList of possible Spaces the checker can move to
+	 */
+	
 	public ArrayList<Space> possibleMoves(Board board){
 		ArrayList<Space> allMoves = new ArrayList<Space>();
 
@@ -175,6 +221,13 @@ public class Checker {
 	}
 
 
+	/**
+	 * Lists all possible jumps a given checker can make
+	 * 
+	 * @param board - current board state
+	 * @return - ArrayList of all possible Spaces the checker can jump to
+	 */
+	
 	public ArrayList<Space> possibleJumps(Board board){
 		ArrayList<Space> allJumps = new ArrayList<Space>();
 
@@ -240,8 +293,11 @@ public class Checker {
 		return allJumps;
 
 	}
-
-	//TODO: make this method move a piece (might not be a void return)
+	
+	/**
+	 * Moves a checker to the specified space
+	 * @param newSpace - the desired Space to jump to
+	 */
 
 	public void move(Space newSpace){
 		Space oldSpace = this.getSpace();
@@ -252,6 +308,12 @@ public class Checker {
 	}
 
 
+	/**
+	 * Jumps a checker to the specified space
+	 * 
+	 * @param newSpace - the desired Space to jump to
+	 * @param board - current board state
+	 */
 	public void jump(Space newSpace, Board board){
 		Space oldSpace = checkerSpace;
 		newSpace.setPiece(this);
@@ -292,6 +354,10 @@ public class Checker {
 	}
 
 
+	/**
+	 * Replaces this checker object with a King
+	 * @param board - current board state.
+	 */
 	public void kingMe(Board board){
 		Space kingSpace = checkerSpace;
 		King king = new King(checkerColor, kingSpace);
